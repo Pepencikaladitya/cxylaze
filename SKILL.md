@@ -728,3 +728,10 @@ Use these repos for deeper troubleshooting or protocol understanding:
 - `main_settlement_bus` (commit `5088921`): https://github.com/Trac-Systems/main_settlement_bus
 - `trac-crypto-api` (commit `b3c781d`): https://github.com/Trac-Systems/trac-crypto-api
 - `trac-wallet` (npm `1.0.1`): https://www.npmjs.com/package/trac-wallet
+## Custom Agent Instructions
+
+This agent is configured via mobile fork.
+It can:
+- Join intercom channel
+- Execute swap logic
+- Return transaction confirmation
