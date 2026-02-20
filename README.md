@@ -1,83 +1,110 @@
-# Intercom
+# ⚡ CYXLAZE BREACH
 
-This repository is a reference implementation of the **Intercom** stack on Trac Network for an **internet of agents**.
+Cyberpunk terminal hacking simulation built with Node.js.
 
-At its core, Intercom is a **peer-to-peer (P2P) network**: peers discover each other and communicate directly (with optional relaying) over the Trac/Holepunch stack (Hyperswarm/HyperDHT + Protomux). There is no central server required for sidechannel messaging.
+A neon-themed interactive breach engine featuring timed firewall challenges, XP progression, rank system, and multi-stage cyber infiltration designed for CLI-based agent environments.
 
-Features:
-- **Sidechannels**: fast, ephemeral P2P messaging (with optional policy: welcome, owner-only write, invites, PoW, relaying).
-- **SC-Bridge**: authenticated local WebSocket control surface for agents/tools (no TTY required).
-- **Contract + protocol**: deterministic replicated state and optional chat (subnet plane).
-- **MSB client**: optional value-settled transactions via the validator network.
+---
 
-Additional references: https://www.moltbook.com/post/9ddd5a47-4e8d-4f01-9908-774669a11c21 and moltbook m/intercom
+## 🚀 Overview
 
-For full, agent‑oriented instructions and operational guidance, **start with `SKILL.md`**.  
-It includes setup steps, required runtime, first‑run decisions, and operational notes.
+CYXLAZE BREACH is a real-time terminal hacking simulator with:
 
-## Awesome Intercom
+- 3-second timed input challenges
+- 5 lives system
+- XP accumulation
+- Rank progression
+- Multi-stage firewall bypass
+- Neon ANSI cyberpunk interface
+- Sound feedback
+- Progressive difficulty
 
-For a curated list of agentic Intercom apps check out: https://github.com/Trac-Systems/awesome-intercom
+Built for immersive CLI interaction and Intercom-compatible agent execution environments.
 
-## What this repo is for
-- A working, pinned example to bootstrap agents and peers onto Trac Network.
-- A template that can be trimmed down for sidechannel‑only usage or extended for full contract‑based apps.
+---
 
-## How to use
-Use the **Pear runtime only** (never native node).  
-Follow the steps in `SKILL.md` to install dependencies, run the admin peer, and join peers correctly.
+## 🎮 Game Mechanics
 
-## Architecture (ASCII map)
-Intercom is a single long-running Pear process that participates in three distinct networking "planes":
-- **Subnet plane**: deterministic state replication (Autobase/Hyperbee over Hyperswarm/Protomux).
-- **Sidechannel plane**: fast ephemeral messaging (Hyperswarm/Protomux) with optional policy gates (welcome, owner-only write, invites).
-- **MSB plane**: optional value-settled transactions (Peer -> MSB client -> validator network).
+- Each stage generates a random access code
+- Player has 3 seconds to type the correct code
+- Incorrect or late input reduces lives
+- XP increases per successful breach
+- Rank upgrades automatically based on XP
+- Game ends when lives reach zero or breach completes
 
-```text
-                          Pear runtime (mandatory)
-                pear run . --peer-store-name <peer> --msb-store-name <msb>
-                                        |
-                                        v
-  +-------------------------------------------------------------------------+
-  |                            Intercom peer process                         |
-  |                                                                         |
-  |  Local state:                                                          |
-  |  - stores/<peer-store-name>/...   (peer identity, subnet state, etc)    |
-  |  - stores/<msb-store-name>/...    (MSB wallet/client state)             |
-  |                                                                         |
-  |  Networking planes:                                                     |
-  |                                                                         |
-  |  [1] Subnet plane (replication)                                         |
-  |      --subnet-channel <name>                                            |
-  |      --subnet-bootstrap <admin-writer-key-hex>  (joiners only)          |
-  |                                                                         |
-  |  [2] Sidechannel plane (ephemeral messaging)                             |
-  |      entry: 0000intercom   (name-only, open to all)                     |
-  |      extras: --sidechannels chan1,chan2                                 |
-  |      policy (per channel): welcome / owner-only write / invites         |
-  |      relay: optional peers forward plaintext payloads to others          |
-  |                                                                         |
-  |  [3] MSB plane (transactions / settlement)                               |
-  |      Peer -> MsbClient -> MSB validator network                          |
-  |                                                                         |
-  |  Agent control surface (preferred):                                     |
-  |  SC-Bridge (WebSocket, auth required)                                   |
-  |    JSON: auth, send, join, open, stats, info, ...                       |
-  +------------------------------+------------------------------+-----------+
-                                 |                              |
-                                 | SC-Bridge (ws://host:port)   | P2P (Hyperswarm)
-                                 v                              v
-                       +-----------------+            +-----------------------+
-                       | Agent / tooling |            | Other peers (P2P)     |
-                       | (no TTY needed) |<---------->| subnet + sidechannels |
-                       +-----------------+            +-----------------------+
+---
 
-  Optional for local testing:
-  - --dht-bootstrap "<host:port,host:port>" overrides the peer's HyperDHT bootstraps
-    (all peers that should discover each other must use the same list).
+## 🏆 Rank Progression
+
+- Script Kiddie
+- Network Raider
+- Elite Hacker
+- Cyber Overlord
+
+---
+
+## ▶️ How To Run
+
+```bash
+git clone https://github.com/Pepencikaladitya/cxylaze-breach.git
+cd cxylaze-breach
+node index.js
+```
+
+Node.js v18+ recommended.
+
+---
+
+## 📸 Preview Game Start
+
+![Preview Game Start](proof/game-start.jpg)
+
+---
+
+## 📸 Preview Game Lose
+
+![Preview Game Lose](proof/game-lose.jpg)
+
+---
+
+## 🔗 TRAC Address
+
+```
+trac1yfd7mm3gz6plecvcsptta3g8w4rvxe6wnq75s86j6jfygcqv859s5vgzyx
 ```
 
 ---
-If you plan to build your own app, study the existing contract/protocol and remove example logic as needed (see `SKILL.md`).
-## Trac Address
-trac1hpsq6yhygaad33qcqtuvgmsccm9r5h4a2he557tr6js208qf28cqwpdurp
+
+## 🛠 Tech Stack
+
+- Node.js
+- Readline Raw Mode
+- ANSI Escape Rendering
+- Timed Input Logic
+- Interval & Promise Control Flow
+- CLI Sound Trigger
+
+---
+
+## 🔥 Skills Demonstrated
+
+- Real-time terminal input handling
+- Timed challenge architecture
+- State management (XP, rank, lives)
+- Asynchronous flow control
+- Dynamic UI rendering
+- Multi-stage game loop design
+- Neon ANSI styling
+- Interactive CLI UX development
+- Minimal dependency system
+- Agentic execution compatibility
+
+---
+
+## 📜 License
+
+MIT License
+
+---
+
+Built for terminal-native interactive cyber simulation within modern CLI and Intercom ecosystems.
